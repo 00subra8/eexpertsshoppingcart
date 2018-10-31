@@ -42,7 +42,6 @@ class ProductSpec extends Specification {
 
         expect:
         !unit.isEmpty()
-
     }
 
     def "For valid productName valid unit price isEmpty returns false"() {
@@ -52,6 +51,5 @@ class ProductSpec extends Specification {
 
         expect:
         !unit.isEmpty()
-
     }
 }

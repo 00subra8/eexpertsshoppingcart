@@ -1,18 +1,11 @@
 package com.ee.eval.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class CartOrder {
-    private Product product;
+    private List<Product> productList;
     private BigDecimal totalPrice;
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 
     public BigDecimal getTotalPrice() {
         return totalPrice;
@@ -20,5 +13,13 @@ public class CartOrder {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 }
