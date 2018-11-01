@@ -1,6 +1,7 @@
 package com.ee.eval.configuration;
 
 import com.ee.eval.action.EEShoppingCart;
+import com.ee.eval.model.CartOrder;
 import com.ee.eval.service.EEShoppingCartService;
 import com.ee.eval.service.InputValidatorService;
 import org.springframework.context.annotation.Bean;
@@ -24,5 +25,10 @@ public class EESCConfiguration {
     @Bean
     public EEShoppingCartService eeShoppingCartService() {
         return new EEShoppingCartService();
+    }
+
+    @Bean
+    public CartOrder cartOrder() {
+        return new CartOrder();
     }
 }

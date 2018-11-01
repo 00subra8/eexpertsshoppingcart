@@ -20,6 +20,9 @@ public class EEShoppingCart {
     @Autowired
     private EEShoppingCartService eeShoppingCartService;
 
+    @Autowired
+    private CartOrder cartOrder;
+
     public CartOrder addProductsToCart(Product product, int quantity) {
         if (product == null || product.isEmpty()) {
             logAndThrowInputException("No Product received");

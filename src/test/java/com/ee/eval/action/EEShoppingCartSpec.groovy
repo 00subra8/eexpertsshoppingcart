@@ -53,14 +53,21 @@ class EEShoppingCartSpec extends Specification {
         given:
         Product doveProduct = getDoveProduct()
         CartOrder expectedCartOrder = new CartOrder()
-        expectedCartOrder.productList = [getDoveProduct(), getDoveProduct(), getDoveProduct(), getDoveProduct(), getDoveProduct()]
-        expectedCartOrder.totalPrice = BigDecimal.valueOf(199.95)
-        int quantity = 5
-        unit.inputValidatorService.isQuantityValid(quantity) >> true
-        unit.eeShoppingCartService.constructCartOrder(doveProduct, quantity) >> expectedCartOrder
+        expectedCartOrder.productList = [getDoveProduct(), getDoveProduct(), getDoveProduct(), getDoveProduct(), getDoveProduct(),
+                                         getDoveProduct(), getDoveProduct(), getDoveProduct()]
+        expectedCartOrder.totalPrice = BigDecimal.valueOf(319.92)
+        int quantity1 = 5
+        int quantity2 = 3
+        unit.inputValidatorService.isQuantityValid(quantity1) >> true
+        unit.inputValidatorService.isQuantityValid(quantity2) >> true
+        unit.eeShoppingCartService.constructCartOrder(doveProduct, quantity2) >> expectedCartOrder
 
-        expect:
-        unit.addProductsToCart(doveProduct, quantity) == expectedCartOrder
+        when:
+        unit.addProductsToCart(doveProduct, quantity1)
+        CartOrder actualCartOrder = unit.addProductsToCart(doveProduct, quantity2)
+
+        then:
+        expectedCartOrder == actualCartOrder
     }
 
     static Product getDoveProduct() {
