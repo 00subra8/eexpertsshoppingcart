@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@Component
 public class EESCConfiguration {
 
     @Bean
@@ -30,5 +29,10 @@ public class EESCConfiguration {
     @Bean
     public CartOrder cartOrder() {
         return new CartOrder();
+    }
+
+    @Bean
+    public ApplicationProperties applicationProperties() {
+        return new ApplicationProperties();
     }
 }

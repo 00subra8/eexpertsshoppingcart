@@ -35,11 +35,12 @@ public class AddProductCart {
         cartOrder = eeShoppingCart.addProductsToCart(productList.get(0), Integer.valueOf(quantity));
     }
 
-    @Then("^Expected totalPrice is \"([^\"]+)\" with cart quantity \"([^\"]+)\"$")
-    public void expectedTotalPriceIsWithCartQuantity(String totalPrice, String expectedQuantity) {
+    @Then("^Expected totalPrice is \"([^\"]+)\" with cart quantity \"([^\"]+)\" and Sales tax \"([^\"]+)\"$")
+    public void expectedTotalPriceIsWithCartQuantity(String totalPrice, String expectedQuantity, String salesTaxComponent) {
         assertNotNull(cartOrder);
         assertNotNull(cartOrder.getProductList());
         assertEquals(cartOrder.getProductList().size(), Integer.valueOf(expectedQuantity).intValue());
         assertEquals(cartOrder.getTotalPrice().doubleValue(), Double.valueOf(totalPrice), 0.00);
+        assertEquals(cartOrder.getSalesTaxComponent().doubleValue(), Double.valueOf(salesTaxComponent), 0.00);
     }
 }

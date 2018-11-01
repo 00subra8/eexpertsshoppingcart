@@ -52,19 +52,19 @@ class EEShoppingCartSpec extends Specification {
     def "Add valid products into the cart"() {
         given:
         Product doveProduct = getDoveProduct()
+        Product axeProduct = getAxeProduct()
         CartOrder expectedCartOrder = new CartOrder()
-        expectedCartOrder.productList = [getDoveProduct(), getDoveProduct(), getDoveProduct(), getDoveProduct(), getDoveProduct(),
-                                         getDoveProduct(), getDoveProduct(), getDoveProduct()]
-        expectedCartOrder.totalPrice = BigDecimal.valueOf(319.92)
-        int quantity1 = 5
-        int quantity2 = 3
+        expectedCartOrder.productList = [getDoveProduct(), getDoveProduct(), getAxeProduct(), getAxeProduct()]
+        expectedCartOrder.totalPrice = BigDecimal.valueOf(314.96)
+        int quantity1 = 2
+        int quantity2 = 2
         unit.inputValidatorService.isQuantityValid(quantity1) >> true
         unit.inputValidatorService.isQuantityValid(quantity2) >> true
-        unit.eeShoppingCartService.constructCartOrder(doveProduct, quantity2) >> expectedCartOrder
+        unit.eeShoppingCartService.constructCartOrder(axeProduct, quantity2) >> expectedCartOrder
 
         when:
         unit.addProductsToCart(doveProduct, quantity1)
-        CartOrder actualCartOrder = unit.addProductsToCart(doveProduct, quantity2)
+        CartOrder actualCartOrder = unit.addProductsToCart(axeProduct, quantity2)
 
         then:
         expectedCartOrder == actualCartOrder
@@ -76,6 +76,14 @@ class EEShoppingCartSpec extends Specification {
         doveProduct.unitPrice = 39.99
 
         doveProduct
+    }
+
+    static Product getAxeProduct() {
+        Product axeProduct = new Product()
+        axeProduct.productName = 'Axe Deo'
+        axeProduct.unitPrice = 99.99
+
+        axeProduct
     }
 
 }

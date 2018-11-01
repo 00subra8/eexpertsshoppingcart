@@ -6,6 +6,7 @@ import java.util.List;
 public class CartOrder {
     private List<Product> productList;
     private BigDecimal totalPrice;
+    private BigDecimal salesTaxComponent;
 
     public BigDecimal getTotalPrice() {
         return totalPrice;
@@ -21,5 +22,13 @@ public class CartOrder {
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
+    }
+
+    public BigDecimal getSalesTaxComponent() {
+        return salesTaxComponent;
+    }
+
+    public void setSalesTaxComponent(BigDecimal salesTaxComponent) {
+        this.salesTaxComponent = salesTaxComponent;
     }
 }
